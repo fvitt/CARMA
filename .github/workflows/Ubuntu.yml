@@ -42,7 +42,7 @@ jobs:
         run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -D CARMA_ENABLE_NETCDF=${{ matrix.enable_netcdf }} -D CARMA_ENABLE_MEMCHECK=ON -D CMAKE_POLICY_VERSION_MINIMUM=3.5 -D CMAKE_Fortran_FLAGS="-ffree-line-length-none"
 
       - name: Build
-        run: cmake --build build --config ${{ matrix.build_type }} --parallel 10
+        run: cmake --build build --config ${{ matrix.build_type }}
 
       - name: Run tests
         run: |
