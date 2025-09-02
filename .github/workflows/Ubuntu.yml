@@ -30,6 +30,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake gfortran libnetcdf-dev netcdf-bin libnetcdff-dev liblapack-dev liblapacke-dev
+          sudo apt-get install -y libblas-dev
+
       - name: Run Cmake
         run: cmake -S . -B build -D CMAKE_BUILD_TYPE=${{ matrix.build_type }} -D CARMA_ENABLE_NETCDF=${{ matrix.enable_netcdf }} -D CARMA_ENABLE_MEMCHECK=ON -D CMAKE_POLICY_VERSION_MINIMUM=3.5
 
